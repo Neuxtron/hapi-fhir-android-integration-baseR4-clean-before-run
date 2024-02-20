@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Test Application</string>
+    <string name="title_activity_list_citizens">List Patients</string>
+
+    <string name="low_risk">Low Risk</string>
+    <string name="moderate_risk">Moderate Risk</string>
+    <string name="high_risk">High Risk</string>
+    <string name="unknown_risk">Unknown Risk</string>
+
+    <string name="btnCancel">Cancel</string>
+    <string name="btnSubmit">Submit</string>
+</resources>

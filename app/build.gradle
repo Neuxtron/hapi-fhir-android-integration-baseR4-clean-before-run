@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+configurations {
+  all*.exclude group: 'org.codehaus.woodstox'
+  all*.exclude group: 'org.apache.httpcomponents'
+}
+
+android {
+    compileSdkVersion 34
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    defaultConfig {
+        applicationId "ca.uhn.fhir.android.test"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'API_URL', '"https://hapi.fhir.org/"'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            buildConfigField 'String', 'API_URL', '"https://hapi.fhir.org/"'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        warning 'InvalidPackage'
+    }
+    namespace 'ca.uhn.fhir.android.test'
+}
+
+dependencies {
+    implementation libraries.appcompat
+    implementation libraries.design
+    implementation libraries.fhirAndroid
+    implementation libraries.fhirStructures
+    implementation libraries.gson
+    implementation libraries.multidex
+    implementation libraries.okHttp
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation testLibraries.junit
+    testImplementation testLibraries.roboeletric
+}

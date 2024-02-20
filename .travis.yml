@@ -1,0 +1,23 @@
+language: android
+
+jdk:
+    - oraclejdk8
+
+android:
+    components:
+        - tools
+        - build-tools-29.0.3
+        - android-29
+        - platform-tools
+        - extra-android-support
+        - extra-android-m2repository
+        - extra-google-m2repository
+        - extra-google-google_play_services
+
+    licenses:
+        - 'android-sdk-license-.+'
+
+cache:
+  directories:
+    - "${HOME}/.gradle"
+    - "${HOME}/.m2"
